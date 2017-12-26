@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import StrainMD from './strainMD'
 
 class App extends React.Component {
     render() {
       return (
         <div>
-          Hello
+          <StrainMD />
         </div>
       )
     }
