@@ -13,7 +13,7 @@ export default class StrainMD extends React.Component {
     constructor() {
         super();
         this.state = {
-
+            selectedStrain: ''
         }
         // binding
         this.search = this.search.bind(this);
@@ -34,7 +34,7 @@ export default class StrainMD extends React.Component {
     }
 
     // search by medicalEffect
-    
+
     searchMedEffect(medEffect) {
         return this.search(effectURL, medEffect).then((i) => {
             return i
@@ -47,20 +47,49 @@ export default class StrainMD extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('hey');
-        this.searchMedEffect('insomnia').then((i) => {
+        // prop selectedSymptom from childState
+        this.searchMedEffect(this.state.selectedSymptom).then((i) => {
             console.log(i)
         })
     }
 
     render() {
         return (
-            <div>
-                <form action="" onSubmit={this.handleSubmit}>
-                    <input type="submit" value="submit"/>
-                </form>
-            </div>
+            <form action="" onSubmit={this.handleSubmit}>
+                <SymptomSelector />
+                <input type="submit" value="submit"/>
+            </form>
         )
     }
 
+}
+
+class SymptomSelector extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            symptoms:
+                {depression: `depression`}
+            ,
+            selectedSymptom: ''
+        }
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(e) {x
+        console.log(e.target.value)
+    }
+
+    render() {
+        return (
+
+            <ul className="symptoms">
+                {Object.keys(this.state.symptoms).map((key) => {
+                    return console.log(key, this.state.symptoms[key])
+                })}
+            </ul>
+
+
+        )
+    }
 }
