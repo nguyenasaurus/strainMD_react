@@ -68,15 +68,27 @@ class SymptomSelector extends React.Component {
     constructor() {
         super();
         this.state = {
-            symptoms:
-                {depression: `depression`}
+            symptoms: {
+                depression: `Depression`,
+                insomnia: `Can't sleep`,
+                pain: `Pain`,
+                stress: `Stress`,
+                cramps: `Cramps`,
+                hungry: `Lack of Appetite`,
+                nausea: `Nausea`,
+                fatigue: `Fatigue`,
+                headache: `Headache/Migraines`,
+                inflammation: `Inflammation`,
+                spasticity: `Muscle Spasms/Spasticity`,
+                seizures: `Seizures`
+                }
             ,
             selectedSymptom: ''
         }
         this.onChange = this.onChange.bind(this);
     }
 
-    onChange(e) {x
+    onChange(e) {
         console.log(e.target.value)
     }
 
@@ -84,8 +96,8 @@ class SymptomSelector extends React.Component {
         return (
 
             <ul className="symptoms">
-                {Object.keys(this.state.symptoms).map((key) => {
-                    return console.log(key, this.state.symptoms[key])
+                {Object.keys(this.state.symptoms).map((key,i) => {
+                    return <li key={i}><input type="checkbox" name ="medSymptom" id= {key} /><label htmlFor={key}>{this.state.symptoms[key]}</label></li>
                 })}
             </ul>
 
