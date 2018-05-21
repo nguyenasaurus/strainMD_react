@@ -45,6 +45,9 @@ export default class StrainMD extends React.Component {
     // get strainEffects
     // get strainFlavour
 
+    handleChange() {
+        console.log()
+    }
     handleSubmit(e) {
         e.preventDefault();
         // prop selectedSymptom from childState
@@ -85,10 +88,10 @@ class SymptomSelector extends React.Component {
             ,
             selectedSymptom: ''
         }
-        this.onChange = this.onChange.bind(this);
+        this.toggleChange = this.toggleChange.bind(this);
     }
 
-    onChange(e) {
+    toggleChange(e) {
         console.log(e.target.value)
     }
 
@@ -97,7 +100,7 @@ class SymptomSelector extends React.Component {
 
             <ul className="symptoms">
                 {Object.keys(this.state.symptoms).map((key,i) => {
-                    return <li key={i}><input type="checkbox" name ="medSymptom" id= {key} /><label htmlFor={key}>{this.state.symptoms[key]}</label></li>
+                    return <li key={i}><input type="checkbox" name ="medSymptom" id={key} value={key} onChange={this.toggleChange}/><label htmlFor={key}>{this.state.symptoms[key]}</label></li>
                 })}
             </ul>
 
